@@ -1,5 +1,3 @@
-import tkinter as tk
-
 class Nodo:
     def __init__(self, val):
         self.hijoIzq = None
@@ -16,7 +14,7 @@ class Nodo:
         self.posXMia = 0
         self.posYMia = 0
 
-    def paint(self, canvas):
+    def pintar(self, canvas):
         canvas.create_oval(
             self.posX, self.posY,
             self.posX + self.largo, self.posY + self.largo,
