@@ -43,16 +43,15 @@ class Ventana(tk.Tk):
             self.dibujar_arbol(arbolito)
             self.entrada_valor.delete(0, 'end')
         else:
-            tk.messagebox.showerror("Error", "Ingrese un valor numérico válido.")
-
+            print("Ingrese un valor numérico válido que pueda corresponder a un Nodo")
     def accion_eliminar(self):
         valor = self.entrada_valor.get()
         if valor.isdigit():
-            arbolito.raiz = arbolito.eliminar(arbolito.raiz, int(valor))
+            arbolito.raiz = arbolito.eliminar(int(valor))
             self.dibujar_arbol(arbolito)
             self.entrada_valor.delete(0, 'end')
         else:
-            tk.messagebox.showerror("Error", "Ingrese un valor numérico válido.")
+            print("Ingrese un valor numérico válido que corresponda a un Nodo Creado.")
 
     def accion_reiniciar(self):
         global arbolito
@@ -67,8 +66,6 @@ arbolito = arbol.Arbol()
 
 class main():
     arbolin = arbol.Arbol()
-    for _ in range(10):
-        arbolin.anadir(arbolin.raiz, nodo.Nodo(random.randint(1,10)))
     arbolin.imprimir(arbolin.raiz)
     v = Ventana()
     v.dibujar_arbol(arbolin)

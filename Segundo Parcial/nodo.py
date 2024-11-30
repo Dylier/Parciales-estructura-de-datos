@@ -20,6 +20,13 @@ class Nodo:
             self.posX + self.largo, self.posY + self.largo,
             outline="black", fill="lightblue"
         )
+        centroX = self.posX + self.largo / 2
+        centroY = self.posY + self.largo / 2
+        canvas.create_text(
+            centroX, centroY, 
+            text=str(self.valor), 
+            fill="black", font=("Arial", 12)
+        )
         if self.posXPapi != 0 or self.posYPapi != 0:
             canvas.create_line(self.posXPapi, self.posYPapi, self.posXMia, self.posYMia, fill="black")
 
