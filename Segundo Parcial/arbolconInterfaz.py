@@ -1,3 +1,9 @@
+import nodo
+import arbol
+import random
+import conf
+import tkinter as tk
+
 class Ventana(tk.Tk):
     def __init__(self):
         super().__init__()
@@ -30,9 +36,10 @@ class Ventana(tk.Tk):
         arbolito.pintar(self.canvas, arbolito.raiz)
 
     def accion_añadir(self):
+
         valor = self.entrada_valor.get()
         if valor.isdigit():
-            arbolito.anadir(arbolito.raiz, Nodo(int(valor)))
+            arbolito.anadir(arbolito.raiz, nodo.Nodo(int(valor)))
             self.dibujar_arbol(arbolito)
             self.entrada_valor.delete(0, 'end')
         else:
@@ -49,8 +56,23 @@ class Ventana(tk.Tk):
 
     def accion_reiniciar(self):
         global arbolito
-        arbolito = Arbol()
+        arbolito = arbol.Arbol()
         self.dibujar_arbol(arbolito)
 
     def accion_imprimir(self):
         arbolito.imprimir(arbolito.raiz)
+
+arbolito = arbol.Arbol()
+
+
+class main():
+    arbolin = arbol.Arbol()
+    for _ in range(10):
+        arbolin.anadir(arbolin.raiz, nodo.Nodo(random.randint(1,10)))
+    arbolin.imprimir(arbolin.raiz)
+    v = Ventana()
+    v.dibujar_arbol(arbolin)
+    v.mainloop()
+    
+main()
+
