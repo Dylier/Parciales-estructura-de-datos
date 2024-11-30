@@ -61,3 +61,36 @@ class Arbol:
                         nuevo.posYMia = nuevo.posY
                     else:
                         self.anadir(padre.hijoDer, nuevo)
+
+    def eliminar(self, valor):
+        def eliminar_nodo(padre, nodo, valor):
+            if nodo is None:
+                return None
+            
+            if valor < nodo.valor:  
+                nodo.hijoIzq = eliminar_nodo(nodo, nodo.hijoIzq, valor)
+            elif valor > nodo.valor:  
+                nodo.hijoDer = eliminar_nodo(nodo, nodo.hijoDer, valor)
+            else:  
+                if nodo.hijoIzq is None and nodo.hijoDer is None:
+                    return None
+
+                
+                if nodo.hijoIzq is None:
+                    return nodo.hijoDer
+                elif nodo.hijoDer is None:
+                    return nodo.hijoIzq
+
+                sucesor = self.obtener_minimo(nodo.hijoDer)
+                nodo.valor = sucesor.valor  
+                nodo.hijoDer = eliminar_nodo(nodo, nodo.hijoDer, sucesor.valor)  
+
+            return nodo
+
+        self.raiz = eliminar_nodo(None, self.raiz, valor)
+
+    def obtener_minimo(self, nodo):
+        actual = nodo
+        while actual.hijoIzq is not None:
+            actual = actual.hijoIzq
+        return actual

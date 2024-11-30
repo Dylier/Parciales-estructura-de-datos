@@ -43,7 +43,7 @@ class Ventana(tk.Tk):
             self.dibujar_arbol(arbolito)
             self.entrada_valor.delete(0, 'end')
         else:
-            messagebox.showerror("Error", "Ingrese un valor numérico válido.")
+            tk.messagebox.showerror("Error", "Ingrese un valor numérico válido.")
 
     def accion_eliminar(self):
         valor = self.entrada_valor.get()
@@ -52,7 +52,7 @@ class Ventana(tk.Tk):
             self.dibujar_arbol(arbolito)
             self.entrada_valor.delete(0, 'end')
         else:
-            messagebox.showerror("Error", "Ingrese un valor numérico válido.")
+            tk.messagebox.showerror("Error", "Ingrese un valor numérico válido.")
 
     def accion_reiniciar(self):
         global arbolito
