@@ -64,15 +64,20 @@ class Arbol:
 
     def eliminar(self, valor):
         def eliminar_nodo(padre, nodo, valor):
+            print(f"Revisando nodo {nodo.valor}")
             if nodo is None:
                 return None
             
             if valor < nodo.valor:  
+                print(f"Revisando nodo hijo izq {nodo.hijoIzq.valor}")
                 nodo.hijoIzq = eliminar_nodo(nodo, nodo.hijoIzq, valor)
             elif valor > nodo.valor:  
+                print(f"Revisando nodo hijo der {nodo.hijoDer.valor}")
                 nodo.hijoDer = eliminar_nodo(nodo, nodo.hijoDer, valor)
             else:  
+                print("Nodo encontrado, eliminando ...")
                 if nodo.hijoIzq is None and nodo.hijoDer is None:
+                    print("No tienen hijos, devolviendo valor vacio")
                     return None
 
                 
@@ -84,10 +89,10 @@ class Arbol:
                 sucesor = self.obtener_minimo(nodo.hijoDer)
                 nodo.valor = sucesor.valor  
                 nodo.hijoDer = eliminar_nodo(nodo, nodo.hijoDer, sucesor.valor)  
-
             return nodo
 
         self.raiz = eliminar_nodo(None, self.raiz, valor)
+        return self.raiz
 
     def obtener_minimo(self, nodo):
         actual = nodo
